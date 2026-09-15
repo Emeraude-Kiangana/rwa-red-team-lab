@@ -1,0 +1,17 @@
+{
+  "spec": "rwa-red-team-lab/evidence-bundle/v0",
+  "asset_id": "PLOT-001",
+  "evidence": [
+    {
+      "evidence_id": "EVD-0001",
+      "type": "soil_measurement",
+      "captured_at": "2026-09-15T10:00:00Z",
+      "data": {
+        "soil_carbon_percent": 2.1,
+        "ph": 5.8,
+        "method": "demo-lab-assay"
+      }
+    }
+  ],
+  "payload_hash": "sha256:b810ba34a81336df669ad6cd716033c18e010fd2f424883f2a01952623a9cd0f"
+}
