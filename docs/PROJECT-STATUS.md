@@ -7,17 +7,24 @@ Status date: **2026-09-18**
 | Gate 0 threat model | DOCUMENTED | README |
 | Deterministic verifier | IMPLEMENTED | `verifier/` |
 | Adversarial cases | IMPLEMENTED | `attacks/` |
-| Test suite | IMPLEMENTED | `tests/` |
-| GitHub Actions workflow | IMPLEMENTED | `.github/workflows/gate0.yml` |
-| Current Gate 0 CI | BLOCKED | Recent runs are failing |
-| Latest observed run | BLOCKED | `35029517528` = FAILURE |
-| Previous observed runs | BLOCKED | `35029453782`, `35029387129` = FAILURE |
-| Reproducible green baseline | UNKNOWN | Current CI does not support this claim |
+| Test suite | TESTED | `tests/` + GitHub Actions |
+| GitHub Actions workflow | TESTED | `.github/workflows/gate0.yml` |
+| Pytest import configuration | IMPLEMENTED | `pytest.ini` |
+| Gate 0 PR verification | TESTED | Run `35327618745` = SUCCESS |
+| Gate 0 main verification | TESTED | Run `35327656824` = SUCCESS |
+| CI repair merge | IMPLEMENTED | Commit `da870f0af4f0cc13c0bb8ccf65db4fab748979b4` |
+| Legal / financial validity | UNKNOWN | Explicitly outside Gate 0 |
+| AI red-team automation | UNKNOWN | Outside current Gate 0 scope |
 
-## Interpretation
+## Verified Gate 0 behavior
 
-The repository contains a concrete verifier, attack cases and tests, but its current CI state is red. Until the failing Gate 0 workflow is repaired and a green run is recorded, the project must not be described as fully verified.
+The GitHub-hosted workflow now confirms both:
 
-## Next technical checkpoint
+1. `python verifier/check.py assets/PLOT-001/evidence.json` returns a successful baseline verdict;
+2. `pytest -q` completes successfully with the deterministic Gate 0 test suite.
 
-Diagnose the Gate 0 CI failure without expanding scope, obtain one clean GitHub-hosted success run, then record the exact commit and run ID as evidence.
+The CI failure was caused by pytest not resolving the repository-root `verifier` module. The repair adds only pytest path/discovery configuration and does not change verifier logic.
+
+## Boundary
+
+Gate 0 establishes a deterministic evidence-integrity verification baseline. It does not establish legal title, identity, blockchain anchoring, RWA issuance, regulatory compliance or AI-based adversarial validation.
